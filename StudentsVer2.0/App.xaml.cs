@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StudentsVer2._0.Model;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,6 @@ namespace StudentsVer2._0
     /// </summary>
     public partial class App : Application
     {
+        public static StudentsEntities context = new StudentsEntities();
     }
 }
