@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StudentsVer2._0.AppData;
+using StudentsVer2._0.View.Windows.Menu;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
@@ -27,7 +29,11 @@ namespace StudentsVer2._0.View.Windows.Login
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (LoginTb.Text == AuthorizationHelper.login.ToString() && PasswordTb.Text == AuthorizationHelper.password.ToString())
+            {
+                MainMenuWindow mainMenuWindow = new MainMenuWindow();
+                mainMenuWindow.Show();
+            }
         }
 
     }

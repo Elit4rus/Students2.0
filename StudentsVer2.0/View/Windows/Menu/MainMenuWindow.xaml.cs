@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StudentsVer2._0.AppData;
+using StudentsVer2._0.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,10 @@ namespace StudentsVer2._0.View.Windows.Menu
         public MainMenuWindow()
         {
             InitializeComponent();
+            if (AuthorizationHelper.currentUser.RoleID == 1)
+            {
+                RoleNameTbl.Text = AuthorizationHelper.currentUser.Surname.ToString() +" "+ AuthorizationHelper.currentUser.Name.ToString();
+            }
         }
     }
 }

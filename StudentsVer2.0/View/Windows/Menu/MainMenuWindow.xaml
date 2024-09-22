@@ -21,8 +21,8 @@
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="RoleNameTbl" Text="Имя роли" FontSize="19" Foreground="White" FontWeight="Medium"/>
-                <TextBlock Grid.Column="1" Text="Имя аккаунта" FontSize="19" Foreground="White" FontWeight="Medium"/>
+                <TextBlock x:Name="RoleNameTbl" FontSize="19" Foreground="White" FontWeight="Medium"/>
+                <TextBlock x:Name="AccountNameTl" Grid.Column="1" FontSize="19" Foreground="White" FontWeight="Medium"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>

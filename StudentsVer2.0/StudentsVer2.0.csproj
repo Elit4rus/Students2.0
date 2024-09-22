@@ -68,6 +68,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AppData\AuthorizationHelper.cs" />
     <Compile Include="Model\Group.cs">
       <DependentUpon>StudentModel.tt</DependentUpon>
     </Compile>
@@ -162,7 +163,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="AppData\" />
     <Folder Include="View\Pages\" />
   </ItemGroup>
   <ItemGroup>
