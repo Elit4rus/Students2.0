@@ -13,16 +13,15 @@
             <RowDefinition Height="840"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-
-        <!-- Верхнее меню -->
+        <!-- #region Верхнее меню -->
         <Grid Background="#5367D3">
             <Grid Margin="20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
-                <TextBlock x:Name="RoleNameTbl" FontSize="19" Foreground="White" FontWeight="Medium"/>
-                <TextBlock x:Name="AccountNameTl" Grid.Column="1" FontSize="19" Foreground="White" FontWeight="Medium"/>
+                <TextBlock x:Name="RoleNameTbl" FontSize="19" Foreground="White" FontWeight="Medium" Text="{Binding User.Role}"/>
+                <TextBlock x:Name="AccountNameTbl" Grid.Column="1" FontSize="19" Foreground="White" FontWeight="Medium"/>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -31,5 +30,27 @@
                 </Grid.ColumnDefinitions>
             </Grid>
         </Grid>
+        <!-- #endregion -->
+        <!--#region Подменю-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox Name="GroupCmb" Margin="30 0 0 0"/>
+        </Grid>
+        <!--#endregion-->
+        <!--#region Список студентов-->
+        <ListView x:Name="StudentsLv" Grid.Row="2" SelectionChanged="StudentsLv_SelectionChanged" FontSize="20">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Surname}"/>
+                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Patronymic}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--#endregion-->
     </Grid>
 </Window>

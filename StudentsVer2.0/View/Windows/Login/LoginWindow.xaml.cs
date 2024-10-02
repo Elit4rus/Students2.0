@@ -1,4 +1,5 @@
 ﻿using StudentsVer2._0.AppData;
+using StudentsVer2._0.Model;
 using StudentsVer2._0.View.Windows.Menu;
 using System;
 using System.Collections.Generic;
@@ -29,10 +30,15 @@ namespace StudentsVer2._0.View.Windows.Login
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginTb.Text == AuthorizationHelper.login.ToString() && PasswordTb.Text == AuthorizationHelper.password.ToString())
+            if (AuthorizationHelper.CheckData(LoginTb.Text, PasswordTb.Text) == true)
             {
+                MessageBox.Show("Успешный вход в систему");
                 MainMenuWindow mainMenuWindow = new MainMenuWindow();
                 mainMenuWindow.Show();
+            }
+            else 
+            {
+                MessageBox.Show("Данные неверны");
             }
         }
 

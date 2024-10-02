@@ -69,39 +69,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppData\AuthorizationHelper.cs" />
-    <Compile Include="Model\Group.cs">
-      <DependentUpon>StudentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\GroupStudent.cs">
-      <DependentUpon>StudentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Role.cs">
-      <DependentUpon>StudentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Student.cs">
-      <DependentUpon>StudentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\StudentModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\StudentModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\StudentModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\User.cs">
-      <DependentUpon>StudentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\UserGroup.cs">
-      <DependentUpon>StudentModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\Login\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -127,13 +94,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\StudentModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StudentModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Model\StudentModel.edmx.diagram">
-      <DependentUpon>StudentModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -163,6 +123,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Model\" />
     <Folder Include="View\Pages\" />
   </ItemGroup>
   <ItemGroup>
@@ -182,18 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Image\hidden.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Model\StudentModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>StudentModel.Context.cs</LastGenOutput>
-      <DependentUpon>StudentModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model\StudentModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StudentModel.edmx</DependentUpon>
-      <LastGenOutput>StudentModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
