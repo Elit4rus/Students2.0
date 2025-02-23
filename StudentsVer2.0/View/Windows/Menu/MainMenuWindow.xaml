@@ -34,11 +34,11 @@
         <!--#region Подменю-->
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <ComboBox Name="GroupCmb" Margin="30 0 0 0"/>
+            <ComboBox Name="GroupCmb" Margin="30 5 0 5" FontSize="20" VerticalContentAlignment="Center" SelectionChanged="GroupCmb_SelectionChanged"/>
         </Grid>
         <!--#endregion-->
         <!--#region Список студентов-->

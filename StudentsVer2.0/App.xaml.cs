@@ -14,6 +14,6 @@ namespace StudentsVer2._0
     /// </summary>
     public partial class App : Application
     {
-        public static StudentsEntities context = new StudentsEntities();
+        public static StudentEntities context = new StudentEntities();
     }
 }

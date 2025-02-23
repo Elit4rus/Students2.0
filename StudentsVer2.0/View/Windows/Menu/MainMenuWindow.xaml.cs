@@ -1,19 +1,9 @@
 ﻿using StudentsVer2._0.AppData;
-using StudentsVer2._0.Properties;
-using System;
+using StudentsVer2._0.Model;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace StudentsVer2._0.View.Windows.Menu
 {
@@ -24,12 +14,10 @@ namespace StudentsVer2._0.View.Windows.Menu
     {
         // Создаем список пользователей
         List<Student> students = App.context.Student.ToList();
+        List<Group> groups = App.context.Group.ToList();
         public MainMenuWindow()
         {
             InitializeComponent();
-            // Загружаем список пользователей
-            StudentsLv.ItemsSource = students;
-
             // Авторизация пользователя
             RoleNameTbl.Text = AuthorizationHelper.currentUser.Role.Title;
             AccountNameTbl.Text = AuthorizationHelper.currentUser.Surname + " " + AuthorizationHelper.currentUser.Name;
@@ -38,12 +26,58 @@ namespace StudentsVer2._0.View.Windows.Menu
             GroupCmb.SelectedValuePath = "ID";
             GroupCmb.DisplayMemberPath = "Title";
 
-            GroupCmb.ItemsSource = App.context.Group.Where(g => g.).ToList();
+            // Загружаем группы, связанные с текущим пользователем
+            LoadGroups(AuthorizationHelper.currentUser.ID);
+        }
+
+        private void LoadGroups(int userID)
+        {
+            // Загружаем группы, связанные с текущим пользователем, через таблицу UserGroup
+            var userGroup = (from ug in App.context.UserGroup
+                             join g in App.context.Group on ug.GroupID equals g.ID
+                             where ug.UserID == userID
+                             select g).ToList();
+            GroupCmb.ItemsSource = userGroup;
         }
 
         private void StudentsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
+        }
+
+        private void GroupCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Group selectedGroup = GroupCmb.SelectedItem as Group;
+            if (selectedGroup != null)
+            {
+                // Загружаем студентов для выбранной группы
+                LoadStudents(selectedGroup.ID, AuthorizationHelper.currentUser.ID);
+            }
+        }
+        private void LoadStudents(int groupID, int userRoleID)
+        {
+            List<Student> students;
+            if (userRoleID == 1) // Администратор
+            {
+                // Администратор видит всех студентов в выбранной группе
+                students = (from student in App.context.Student
+                            where student.GroupID == groupID
+                            select student).ToList();
+            }
+            else if (userRoleID == 2) // Преподаватель
+            {
+                // Преподаватель видит студентов, связанных с его группами
+                students = (from student in App.context.Student
+                            join userGroup in App.context.UserGroup on student.GroupID equals userGroup.GroupID
+                            where userGroup.UserID == AuthorizationHelper.currentUser.RoleID && student.GroupID == groupID
+                            select student).ToList();
+            }
+            else
+            {
+                students = new List<Student>();
+            }
+            // Загружаем данные в ListView
+            StudentsLv.ItemsSource = students;
         }
     }
 }
