@@ -1,5 +1,6 @@
 ﻿using StudentsVer2._0.AppData;
 using StudentsVer2._0.Model;
+using StudentsVer2._0.View.Windows.StudentDetails;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -42,7 +43,18 @@ namespace StudentsVer2._0.View.Windows.Menu
 
         private void StudentsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            // Получаем выбранного студента
+            var selectedStudent = StudentsLv.SelectedItem as Student;
 
+            if (selectedStudent != null)
+            {
+                // Загружаем название группы из текущего контекста
+                string groupTitle = App.context.Group.FirstOrDefault(g => g.ID == selectedStudent.ID)?.Title ?? "Группа не найдена";
+
+                // Открываем окно с личным делом студента
+                StudentDetailsWindow studentDetailsWindow = new StudentDetailsWindow(selectedStudent, groupTitle);
+                studentDetailsWindow.Show();
+            }
         }
 
         private void GroupCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
