@@ -43,8 +43,6 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="64"/>
-            <RowDefinition Height="52"/>
-            <RowDefinition Height="840"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <!-- #region Верхнее меню -->
@@ -62,7 +60,7 @@
                 <!--#region Имя пользователя-->
                 <TextBlock x:Name="AccountNameTbl" Grid.Column="1" FontSize="19" Foreground="White" FontWeight="Medium"/>
                 <!--#endregion-->
-                
+
                 <!--#region Иконка "Выхода"-->
                 <Border Grid.Column="3" Width="18" Height="18">
                     <Button Name="ExitBtn" Style="{StaticResource ButtonExit}" Click="ExitBtn_Click">
@@ -79,12 +77,17 @@
             </Grid>
         </Grid>
         <!-- #endregion -->
-        
-        <!--#region Frame-->
-        <Grid Grid.Row="1" Grid.RowSpan="3">
-            <Frame Name="MainFrame" NavigationUIVisibility="Hidden"/>
+
+        <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden"/>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="52"/>
+                <RowDefinition Height="840"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
             <!--#region Подменю-->
-            <Grid Grid.Row="1">
+            <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.5*"/>
                     <ColumnDefinition Width="1*"/>
@@ -93,18 +96,20 @@
                 <ComboBox Name="GroupCmb" Margin="30 5 0 5" FontSize="20" VerticalContentAlignment="Center" SelectionChanged="GroupCmb_SelectionChanged"/>
             </Grid>
             <!--#endregion-->
-            <!--#region Список студентов-->
-            <ListView x:Name="StudentsLv" Grid.Row="2" SelectionChanged="StudentsLv_SelectionChanged" FontSize="20">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Surname}"/>
-                        <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>
-                        <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Patronymic}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <!--#endregion-->
+
+            <Grid Grid.Row="1">
+                <!--#region Список студентов-->
+                <ListView x:Name="StudentsLv" SelectionChanged="StudentsLv_SelectionChanged" FontSize="20">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Surname}"/>
+                            <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Patronymic}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <!--#endregion-->
+            </Grid>
         </Grid>
-        <!--#endregion-->
     </Grid>
 </Window>
