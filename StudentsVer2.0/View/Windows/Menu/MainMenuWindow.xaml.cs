@@ -1,5 +1,6 @@
 ﻿using StudentsVer2._0.AppData;
 using StudentsVer2._0.Model;
+using StudentsVer2._0.View.Windows.Login;
 using StudentsVer2._0.View.Windows.StudentDetails;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,6 +91,30 @@ namespace StudentsVer2._0.View.Windows.Menu
             }
             // Загружаем данные в ListView
             StudentsLv.ItemsSource = students;
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // Создаем и показываем кастомное окно
+            LogoutWindow logoutWindow = new LogoutWindow();
+
+            logoutWindow.Left = 1650;
+            logoutWindow.Top = 70;
+
+            bool? result = logoutWindow.ShowDialog();
+
+            // Если пользователь нажал "Выйти"
+            if (result == true)
+            {
+                // Логика выхода из аккаунта
+                PerformLogout();
+            }
+        }
+        private void PerformLogout()
+        {
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            Close();
         }
     }
 }
