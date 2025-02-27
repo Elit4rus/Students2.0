@@ -45,6 +45,7 @@
             <RowDefinition Height="64"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+
         <!-- #region Верхнее меню -->
         <Grid Background="#5367D3">
             <Grid Margin="20">
@@ -78,7 +79,6 @@
         </Grid>
         <!-- #endregion -->
 
-        <Frame Grid.Row="1" Name="MainFrame" NavigationUIVisibility="Hidden"/>
 
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
@@ -96,7 +96,6 @@
                 <ComboBox Name="GroupCmb" Margin="30 5 0 5" FontSize="20" VerticalContentAlignment="Center" SelectionChanged="GroupCmb_SelectionChanged"/>
             </Grid>
             <!--#endregion-->
-
             <Grid Grid.Row="1">
                 <!--#region Список студентов-->
                 <ListView x:Name="StudentsLv" SelectionChanged="StudentsLv_SelectionChanged" FontSize="20">
@@ -110,6 +109,7 @@
                 </ListView>
                 <!--#endregion-->
             </Grid>
+            <Frame Grid.RowSpan="3" Name="MainFrame" NavigationUIVisibility="Hidden"/>
         </Grid>
     </Grid>
 </Window>

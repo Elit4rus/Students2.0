@@ -1,7 +1,6 @@
 ﻿using StudentsVer2._0.AppData;
 using StudentsVer2._0.Model;
 using StudentsVer2._0.View.Windows.Login;
-using StudentsVer2._0.View.Windows.StudentDetails;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -20,6 +19,9 @@ namespace StudentsVer2._0.View.Windows.Menu
         public MainMenuWindow()
         {
             InitializeComponent();
+
+            FrameHelper.mainFrame = MainFrame;
+
             // Авторизация пользователя
             RoleNameTbl.Text = AuthorizationHelper.currentUser.Role.Title;
             AccountNameTbl.Text = AuthorizationHelper.currentUser.Surname + " " + AuthorizationHelper.currentUser.Name;
@@ -53,8 +55,10 @@ namespace StudentsVer2._0.View.Windows.Menu
                 string groupTitle = App.context.Group.FirstOrDefault(g => g.ID == selectedStudent.ID)?.Title ?? "Группа не найдена";
 
                 // Открываем окно с личным делом студента
-                StudentDetailsWindow studentDetailsWindow = new StudentDetailsWindow(selectedStudent, groupTitle);
-                studentDetailsWindow.Show();
+                //StudentDetailsWindow studentDetailsWindow = new StudentDetailsWindow(selectedStudent, groupTitle);
+                //studentDetailsWindow.Show();
+
+                MainFrame.Navigate(new View.Pages.Menu.StudentDetailPage(selectedStudent, groupTitle));
             }
         }
 
