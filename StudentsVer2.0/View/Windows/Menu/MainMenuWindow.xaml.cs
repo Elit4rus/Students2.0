@@ -52,7 +52,7 @@ namespace StudentsVer2._0.View.Windows.Menu
             if (selectedStudent != null)
             {
                 // Загружаем название группы из текущего контекста
-                string groupTitle = App.context.Group.FirstOrDefault(g => g.ID == selectedStudent.ID)?.Title ?? "Группа не найдена";
+                string groupTitle = App.context.Group.FirstOrDefault(g => g.ID == selectedStudent.GroupID)?.Title ?? "Группа не найдена";
 
                 // Открываем окно с личным делом студента
                 //StudentDetailsWindow studentDetailsWindow = new StudentDetailsWindow(selectedStudent, groupTitle);
