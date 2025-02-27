@@ -214,6 +214,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resource\Icons\account.png" />
     <Resource Include="Resource\Icons\circle-xmark.png" />
     <Resource Include="Resource\Icons\exit.png" />
   </ItemGroup>
