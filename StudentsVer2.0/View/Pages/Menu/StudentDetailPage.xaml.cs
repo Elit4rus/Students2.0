@@ -17,5 +17,10 @@ namespace StudentsVer2._0.View.Pages.Menu
 
             GroupTbl.Text = groupTitle;
         }
+
+        private void BackBtn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            this.NavigationService.Content = null;
+        }
     }
 }

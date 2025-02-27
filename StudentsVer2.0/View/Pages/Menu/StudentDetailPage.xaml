@@ -8,18 +8,51 @@
       d:DesignHeight="1000" d:DesignWidth="1920"
       Title="StudentDetailPage">
     <Grid Background="White">
-        <StackPanel>
-            <TextBlock Text="Фамилия:" FontWeight="Bold"/>
-            <TextBlock x:Name="SurnameTbl" Margin="0,0,0,10"/>
-
-            <TextBlock Text="Имя:" FontWeight="Bold"/>
-            <TextBlock x:Name="NameTbl" Margin="0,0,0,10"/>
-
-            <TextBlock Text="Отчество:" FontWeight="Bold"/>
-            <TextBlock x:Name="PatronymicTbl" Margin="0,0,0,10"/>
-
-            <TextBlock Text="Группа:" FontWeight="Bold"/>
-            <TextBlock x:Name="GroupTbl" Margin="0,0,0,10"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Button Name="BackBtn" 
+                Content="Назад" 
+                Width="120" 
+                Height="40" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Center" 
+                FontSize="18"
+                Margin="30 0 0 0"
+                Click="BackBtn_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontFamily" Value="Roboto"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5"
+                                BorderThickness="1"
+                                BorderBrush="Black">
+                                    <ContentPresenter Margin="0 2 0 0" HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#5367D3"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontWeight" Value="Medium"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <StackPanel Grid.Row="1">
+            <TextBlock x:Name="SurnameTbl"/>
+            <TextBlock x:Name="NameTbl"/>
+            <TextBlock x:Name="PatronymicTbl"/>
+            <TextBlock x:Name="GroupTbl"/>
         </StackPanel>
     </Grid>
 </Page>
